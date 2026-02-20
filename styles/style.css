@@ -4,13 +4,80 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
 
+@supports((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
+  .card__image-label {
+    -webkit-text-stroke: 1px var(--stroke-color);
+    text-stroke: 1px var(--stroke-color);
+    text-shadow: none;
+  }
+}
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: 'wdth' var(--main-wght);
+  background-image: 
+    repeating-linear-gradient(to right, var(--bg-gradient) 0px 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, var(--bg-gradient) 0px 2px, transparent 2px 4px),
+    linear-gradient(to bottom, var(--gradient-top) 0.01%, var(--gradient-bottom) 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-family: var(--accent-font), sans-serif;
+  width: var(--container-width);
+  background-color: white;
+  border: 2px solid black;
+  text-transform: uppercase;
+  margin-top: 100px;
+  margin-bottom: 98px;
+  padding-block: clamp(7.5rem, 15vw, 8.125rem); 
+}
+
+.header__title {
+  font-size: 65px;
+}
+
+.header__subtitle {
+  font-size: 23px;
+}
+
+.card-start {
+  width: var(--container-width);
+}
+
+.card__image-container {
+  position: relative;
+}
+
+.card__image-label {
+  position: absolute;
+  font-family: var(--accent-font), sans-serif;
+  text-transform: uppercase;
+  mix-blend-mode: hard-light;
+  font-size: 14px;
+  opacity: 50%;
+  right: 25px;
+  top: 25px;
+  text-shadow:
+      -1px 0 var(--stroke-color),
+      0 1px var(--stroke-color),
+      1px 0 var(--stroke-color),
+      0 -1px var(--stroke-color);
 }
