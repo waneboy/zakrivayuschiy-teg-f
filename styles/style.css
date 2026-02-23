@@ -35,7 +35,7 @@
 }
 
 .main {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
@@ -54,7 +54,7 @@
   text-transform: uppercase;
   margin-top: 100px;
   margin-bottom: 98px;
-  padding-block: clamp(7.5rem, 15vw, 8.125rem); 
+  padding-block: clamp(7.5rem, 15vw, 8.125rem);
 }
 
 .header__title {
@@ -106,7 +106,7 @@ img {
 }
 
 .image-long-way {
-  filter: grayscale(80%);
+  filter: grayscale(80%) contrast(180%);
 }
 
 .card__image-label {
