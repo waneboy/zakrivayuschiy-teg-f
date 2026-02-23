@@ -9,4 +9,7 @@
     --gradient-bottom: #1a1a1a;
     --container-width: clamp(375px, calc(375px + (700 - 375) * (100vw - 375px) / (1440 - 375)), 700px);
     --stroke-color: #fff;
+    --btn-text-color: #fff;
+    --contour-color: black;
+    --sparks-color: red;
 }
