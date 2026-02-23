@@ -8,15 +8,6 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-
-@supports((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
-  .card__image-label {
-    -webkit-text-stroke: 1px var(--stroke-color);
-    text-stroke: 1px var(--stroke-color);
-    text-shadow: none;
-  }
-}
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -58,11 +49,11 @@
 }
 
 .header__title {
-  font-size: 65px;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
 .header__subtitle {
-  font-size: 23px;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
 }
 
 /* карточки */
@@ -127,6 +118,7 @@ img {
 }
 
 .card__title {
+  font-variation-settings: 'wght' 715;
   margin: 4px 10px;
   font-size: 18px;
 }
@@ -162,18 +154,28 @@ img {
 }
 
 .card__like-button {
-  position: relative;
   height: 38px;
   width: 130px;
-  font-size: 14px;
-  font-family: var(--accent-font);
   background-color: transparent;
   border: 2px solid black;
-  cursor: pointer;
-  overflow: hidden;
 }
 
-.card__like-button::before {
+/* общие стили для кнопок */
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 black;
+  transition: 0.3s ease;
+}
+
+.button {
+  position: relative;
+  font-size: 14px;
+  font-family: var(--accent-font), sans-serif;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -184,23 +186,15 @@ img {
   z-index: 0;
 }
 
-.card__like-button:hover::before {
+.button:hover::before {
   transform: scaleX(1);
 }
 
-.card__like-button span {
+.button span {
   position: relative;
   z-index: 1;
   color: var(--btn-text-color);
   mix-blend-mode: difference;
-}
-
-.card__like-button:focus,
-.btn__save:focus,
-.dialog__btn:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 0 black;
-  transition: 0.3s ease;
 }
 
 /* кнопка для открытия модального окна */
@@ -212,22 +206,6 @@ img {
   padding: 17px 20px;
   border: 2px solid black;
   background-color: white;
-  cursor: pointer;
-  position: relative;
-}
-
-.btn__save::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: black;
-  transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform 0.5s ease-in-out;
-}
-
-.btn__save:hover::before {
-  transform: scaleX(1);
 }
 
 .btn__save-content {
@@ -247,7 +225,7 @@ img {
 
 .btn__save p {
   font-size: 14px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
 }
 
 /* модальное окно */
@@ -276,7 +254,7 @@ dialog:not([open]) {
 
 .dialog h2 {
   font-size: 14px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   line-height: 150%;
   text-transform: uppercase;
   width: 234px;
@@ -289,35 +267,9 @@ dialog:not([open]) {
 .dialog__btn {
   width: 293px;
   height: 38px;
-  font-size: 14px;
-  font-family: var(--accent-font);
   text-transform: uppercase;
   border: 2px solid black;
   background-color: white;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.dialog__btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: #000;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-  z-index: 0;
-}
-
-.dialog__btn:hover::before {
-  transform: scaleX(1);
-}
-
-.dialog__btn span {
-  position: relative;
-  z-index: 1;
-  color: var(--btn-text-color);
-  mix-blend-mode: difference;
 }
 
 dialog::backdrop {
@@ -390,6 +342,15 @@ dialog::backdrop {
   animation: opacity 0.3s ease-in 0.3s;
 }
 
+@supports((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
+  .card__image-label {
+    -webkit-text-stroke: 1px var(--stroke-color);
+    text-stroke: 1px var(--stroke-color);
+    text-shadow: none;
+  }
+}
+
+
 @media (width <= 375px) {
   .header {
     margin-bottom: 100px;
@@ -401,5 +362,9 @@ dialog::backdrop {
 
   .header__subtitle {
     font-size: 14px;
+  }
+
+  .btn__save-content {
+    flex-direction: column;
   }
 }
