@@ -65,6 +65,9 @@
 
 .card__image-container {
   position: relative;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  height: 696px;
 }
 
 img {
@@ -141,7 +144,6 @@ img {
 .card__buttons {
   display: flex;
   justify-content: end;
-  gap: 12px;
 }
 
 .card__icon-button {
@@ -151,6 +153,18 @@ img {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+  padding: 0;
+  border: 2px solid black;
+  margin-right: 4px;
+  height: 38px;
+}
+
+.like-icon:focus {
+  margin: 0 auto;
 }
 
 .card__like-button {
@@ -202,8 +216,10 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
+  height: 55px;
+  width: 335px;
   margin-bottom: 100px;
-  padding: 17px 20px;
+  padding: 17px;
   border: 2px solid black;
   background-color: white;
 }
@@ -213,7 +229,7 @@ img {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   color: white;
   mix-blend-mode: difference;
 }
@@ -366,5 +382,30 @@ dialog::backdrop {
 
   .btn__save-content {
     flex-direction: column;
+  }
+
+  .btn__save {
+    height: 84px;
+    width: 306px;
+  }
+
+  .btn__svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    gap: 30px;
+    width: 341px;
+    height: 191px;
+    padding: 28px 40px;
+  }
+
+ .dialog h2 {
+  margin-left: 3px;
+ }
+  
+  .dialog__btn {
+    width: 259px;
   }
 }
